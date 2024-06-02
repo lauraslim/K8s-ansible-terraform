@@ -7,3 +7,4 @@
 
 #log into your master node and sudo -i to become root and start running kubectl command: if you don't become root, 
 #we might get the error: couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+#the good private key is pri-key-pair
