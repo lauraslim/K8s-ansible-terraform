@@ -1,0 +1,9 @@
+# before runnindg ansible playbook, first change permission for the private key with the cmd:
+# chmod 600 (private key pair)
+#then, run your ansible playbook
+#if you see this error: fatal: [worker-0]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": false, "module_stderr": "sudo: a password is required\n", "module_stdout": "",
+
+# just add on your ansible-playbook cmd: --ask-become-pass
+
+#log into your master node and sudo -i to become root and start running kubectl command: if you don't become root, 
+#we might get the error: couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused

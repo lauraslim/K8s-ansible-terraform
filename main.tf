@@ -215,14 +215,16 @@ resource "tls_private_key" "kubeadm_demo_pri_key" {
  provisioner "local-exec" { 
     command = "echo '${self.public_key_pem}' > ./pubkey.pem"
   }
-  provisioner "local-exec" {
-    command = "echo chmod 400 private_key.pem"
-  }
+  
 }
   #now we need to store our private key in our local machine ans this will help us to access the machine we created through ssh. therefore, we will create a local file resource in which we will store our private key.go local_file | Resources | hashicorp/local
 resource "local_file" "pri-key-pair" {
   content = tls_private_key.kubeadm_demo_pri_key.private_key_pem
   filename = "pri-keypair_pem"
+
+  provisioner "local-exec" {
+    command = "echo chmod 600 pri-keypair_pem"
+  }
 }
 
 
